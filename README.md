@@ -13,7 +13,7 @@
 
 This image is designed to work on [RunPod](https://runpod.io?ref=2xxro4sy).
 You can use my custom [RunPod template](
-https://runpod.io/gsc?template=&ref=2xxro4sy)
+https://runpod.io/gsc?template=g7wd33iuwv&ref=2xxro4sy)
 to launch it on RunPod.
 
 ## Running Locally
