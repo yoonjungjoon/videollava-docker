@@ -1,5 +1,10 @@
 # Docker image for LLaVA: Large Language and Vision Assistant
 
+> [!IMPORTANT]  
+> Due to the large size of the model, CUDA will result in OOM errors
+> with a GPU that has less than 48GB of VRAM, so A6000 or higher is
+> recommended.
+
 ## Installs
 
 * Ubuntu 22.04 LTS
@@ -36,6 +41,11 @@ docker run -d \
 ```
 
 You can obviously substitute the image name and tag with your own.
+
+## Acknowledgements
+
+1. Matthew Berman for giving me a demo on LLaVA, as well as his amazing
+   [YouTube videos](https://www.youtube.com/@matthew_berman/videos]).
 
 ## Community and Contributing
 
