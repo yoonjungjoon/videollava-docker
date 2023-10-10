@@ -73,6 +73,7 @@ RUN git clone https://github.com/haotian-liu/LLaVA.git && \
 WORKDIR /LLaVA
 RUN source /venv/bin/activate && \
     pip3 install --upgrade pip && \
+    pip3 install wheel && \
     pip3 install -e . && \
     pip3 install ninja && \
     pip3 install flash-attn --no-build-isolation && \
