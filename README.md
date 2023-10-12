@@ -11,7 +11,7 @@
 * CUDA 11.8
 * Python 3.10.12
 * [LLaVA](
-  https://github.com/haotian-liu/llava) v1.1.0
+  https://github.com/haotian-liu/llava) v1.1.1
 * Torch 2.1.0
 
 ## Available on RunPod
@@ -37,7 +37,7 @@ docker run -d \
   -p 3000:3001 \
   -p 8888:8888 \
   -e JUPYTER_PASSWORD=Jup1t3R! \
-  ashleykza/llava:1.0.0
+  ashleykza/llava:1.1.1
 ```
 
 You can obviously substitute the image name and tag with your own.
