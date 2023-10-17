@@ -1,7 +1,7 @@
 # Docker image for LLaVA: Large Language and Vision Assistant
 
 > [!IMPORTANT]  
-> Due to the large size of the model, CUDA will result in OOM errors
+> If you are using the 13b model, CUDA will result in OOM errors
 > with a GPU that has less than 48GB of VRAM, so A6000 or higher is
 > recommended.
 
@@ -37,7 +37,7 @@ docker run -d \
   -p 3000:3001 \
   -p 8888:8888 \
   -e JUPYTER_PASSWORD=Jup1t3R! \
-  ashleykza/llava:1.1.1
+  ashleykza/llava:1.1.2
 ```
 
 You can obviously substitute the image name and tag with your own.

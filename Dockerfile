@@ -95,9 +95,9 @@ RUN wget https://github.com/runpod/runpodctl/releases/download/v1.10.0/runpodctl
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/502.html /usr/share/nginx/html/502.html
 
-# Set up the container startup script
+# Copy the scripts
 WORKDIR /
-COPY --chmod=755 pre_start.sh start.sh fix_venv.sh ./
+COPY --chmod=755 scripts/* ./
 
 # Start the container
 SHELL ["/bin/bash", "--login", "-c"]
