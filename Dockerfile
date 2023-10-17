@@ -57,17 +57,17 @@ RUN apt update && \
 # Set Python
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
 
-# Stage 2: Install FaceFusion and python modules
+# Stage 2: Install LLaVA and python modules
 FROM base as setup
 
 # Create and use the Python venv
 RUN python3 -m venv /venv
 
-# Clone the git repo of FaceFusion and set version
+# Clone the git repo of LLaVA and set version
 WORKDIR /
-RUN git clone https://github.com/haotian-liu/LLaVA.git && \
-    cd /LLaVA && \
-    git checkout ${LLAVA_VERSION}
+RUN git clone https://github.com/ashleykleynhans/LLaVA.git
+#    cd /LLaVA && \
+#    git checkout ${LLAVA_VERSION}
 
 # Install the dependencies for LLaVA
 WORKDIR /LLaVA
