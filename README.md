@@ -13,6 +13,12 @@
 * [LLaVA](
   https://github.com/haotian-liu/llava) v1.1.1
 * Torch 2.1.0
+* llava-v1.5-7b model
+
+You can add an environment variable called `MODEL` to use the
+13b model (`llava-v1.5-13b`) instead of the default 7b version.
+The 7b version is now the default so that it can be used on GPUs
+with less VRAM available.
 
 ## Available on RunPod
 
