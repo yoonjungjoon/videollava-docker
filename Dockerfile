@@ -77,6 +77,7 @@ RUN source /venv/bin/activate && \
     pip3 install -e . && \
     pip3 install ninja && \
     pip3 install flash-attn --no-build-isolation && \
+    pip3 install transformers==4.34.1 && \
     deactivate
 
 # Install Jupyter
