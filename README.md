@@ -7,7 +7,7 @@
 * Python 3.10.12
 * [LLaVA](
   https://github.com/haotian-liu/llava) v1.1.1
-* Torch 2.1.0
+* Torch 2.0.1
 * BakLLaVA-1 model
 
 ## Available on RunPod
