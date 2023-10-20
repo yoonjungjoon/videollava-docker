@@ -1,24 +1,14 @@
 # Docker image for LLaVA: Large Language and Vision Assistant
 
-> [!IMPORTANT]  
-> If you are using the 13b model, CUDA will result in OOM errors
-> with a GPU that has less than 48GB of VRAM, so A6000 or higher is
-> recommended.
-
 ## Installs
 
 * Ubuntu 22.04 LTS
 * CUDA 11.8
 * Python 3.10.12
 * [LLaVA](
-  https://github.com/haotian-liu/llava) v1.1.1
+  https://github.com/haotian-liu/llava) v1.2.0
 * Torch 2.1.0
-* llava-v1.5-7b model
-
-You can add an environment variable called `MODEL` to use the
-13b model (`llava-v1.5-13b`) instead of the default 7b version.
-The 7b version is now the default so that it can be used on GPUs
-with less VRAM available.
+* BakLLaVA-1 model
 
 ## Available on RunPod
 
@@ -43,10 +33,27 @@ docker run -d \
   -p 3000:3001 \
   -p 8888:8888 \
   -e JUPYTER_PASSWORD=Jup1t3R! \
-  ashleykza/llava:1.1.2
+  ashleykza/llava:latest
 ```
 
 You can obviously substitute the image name and tag with your own.
+
+#### Models
+
+> [!IMPORTANT]
+> If you select the 13b model, CUDA will result in OOM errors
+> with a GPU that has less than 48GB of VRAM, so A6000 or higher is
+> recommended.
+
+You can add an environment called `MODEL` to your Docker container to
+specify the model that should be downloaded.  If the `MODEL` environment
+variable is not set, the model will default to `SkunkworksAI/BakLLaVA-1`.
+
+| Model                                                              | Environment Variable Value  | Default |
+|--------------------------------------------------------------------|-----------------------------|---------|
+| [llava-v1.5-13b](https://huggingface.co/liuhaotian/llava-v1.5-13b) | liuhaotian/llava-v1.5-13b   | no      |
+| [llava-v1.5-7b](https://huggingface.co/liuhaotian/llava-v1.5-7b)   | liuhaotian/llava-v1.5-7b    | no      |
+| [BakLLaVA-1](https://huggingface.co/SkunkworksAI/BakLLaVA-1)       | SkunkworksAI/BakLLaVA-1     | yes     |
 
 ## Acknowledgements
 

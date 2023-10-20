@@ -31,7 +31,7 @@ else
     then
       export LLAVA_MODEL=${MODEL}
     else
-      export LLAVA_MODEL="liuhaotian/llava-v1.5-7b"
+      export LLAVA_MODEL="SkunkworksAI/BakLLaVA-1"
     fi
 
     mkdir -p /workspace/logs
