@@ -6,8 +6,9 @@
 * CUDA 11.8
 * Python 3.10.12
 * [LLaVA](
-  https://github.com/haotian-liu/llava) v1.1.1
+  https://github.com/haotian-liu/llava) v1.1.3
 * Torch 2.0.1
+* xformers 0.0.22
 * BakLLaVA-1 model
 
 ## Available on RunPod
