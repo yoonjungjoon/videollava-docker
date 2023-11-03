@@ -39,7 +39,7 @@ docker run -d \
 
 You can obviously substitute the image name and tag with your own.
 
-#### Models
+## Models
 
 > [!IMPORTANT]
 > If you select the 13b model, CUDA will result in OOM errors
@@ -55,6 +55,35 @@ variable is not set, the model will default to `SkunkworksAI/BakLLaVA-1`.
 | [llava-v1.5-13b](https://huggingface.co/liuhaotian/llava-v1.5-13b) | liuhaotian/llava-v1.5-13b   | no      |
 | [llava-v1.5-7b](https://huggingface.co/liuhaotian/llava-v1.5-7b)   | liuhaotian/llava-v1.5-7b    | no      |
 | [BakLLaVA-1](https://huggingface.co/SkunkworksAI/BakLLaVA-1)       | SkunkworksAI/BakLLaVA-1     | yes     |
+
+
+## Flask API
+
+### Add port 5000
+
+If you are running the RunPod template, edit your pod and add HTTP port 5000.
+
+If you are running locally, add a port mapping for port 5000.
+
+### Starting the Flask API
+
+```bash
+# Stop model worker and controller to free up VRAM
+fuser -k 10000/tcp 40000/tcp
+
+# Install dependencies
+source /workspace/venv/bin/activate
+pip3 install flask protobuf
+cd /workspace/LLaVA
+export HF_HOME="/workspace"
+python -m llava.serve.api -H 0.0.0.0 -p 5000
+```
+
+### Sending requests to the Flask API
+
+You can use the [test script](
+https://github.com/ashleykleynhans/LLaVA/blob/main/llava/serve/test_api.py)
+to test your API.
 
 ## Acknowledgements
 

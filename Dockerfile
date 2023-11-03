@@ -1,7 +1,7 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG LLAVA_VERSION=v1.1.3
+ARG LLAVA_COMMIT=7d40fba39c932df2a92c785c4d44d09946b0ef87
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -71,9 +71,9 @@ RUN source /venv/bin/activate && \
 
 # Clone the git repo of LLaVA and set version
 WORKDIR /
-RUN git clone https://github.com/ashleykleynhans/LLaVA.git
-#    cd /LLaVA && \
-#    git checkout ${LLAVA_VERSION}
+RUN git clone https://github.com/ashleykleynhans/LLaVA.git && \
+    cd /LLaVA && \
+    git checkout ${LLAVA_COMMIT}
 
 # Install the dependencies for LLaVA
 WORKDIR /LLaVA
