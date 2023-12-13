@@ -1,7 +1,7 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG LLAVA_COMMIT=7d40fba39c932df2a92c785c4d44d09946b0ef87
+ARG LLAVA_COMMIT=7775b12d6b20cd69089be7a18ea02615a59621cd
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -84,6 +84,7 @@ RUN source /venv/bin/activate && \
     pip3 install ninja && \
     pip3 install flash-attn --no-build-isolation && \
     pip3 install transformers==4.34.1 && \
+    pip3 install protobuf && \
     deactivate
 
 # Install Jupyter
@@ -111,4 +112,4 @@ COPY --chmod=755 scripts/* ./
 
 # Start the container
 SHELL ["/bin/bash", "--login", "-c"]
-CMD [ "/start.sh" ]
+ENTRYPOINT [ "/start.sh" ]

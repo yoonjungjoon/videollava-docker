@@ -35,7 +35,7 @@ else
     fi
 
     mkdir -p /workspace/logs
-    echo "Starting LLaVA"
+    echo "Starting LLaVA using model: ${LLAVA_MODEL}"
     /start_controller.sh
     /start_model_worker.sh
     /start_webserver.sh
