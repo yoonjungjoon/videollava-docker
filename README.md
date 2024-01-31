@@ -42,9 +42,9 @@ You can obviously substitute the image name and tag with your own.
 ## Models
 
 > [!IMPORTANT]
-> If you select the 13b model, CUDA will result in OOM errors
+> If you select a 13B or larger model, CUDA will result in OOM errors
 > with a GPU that has less than 48GB of VRAM, so A6000 or higher is
-> recommended.
+> recommended for 13B.
 
 You can add an environment called `MODEL` to your Docker container to
 specify the model that should be downloaded.  If the `MODEL` environment
@@ -67,6 +67,20 @@ variable is not set, the model will default to `liuhaotian/llava-v1.6-mistral-7b
 | [llava-v1.5-13b](https://huggingface.co/liuhaotian/llava-v1.5-13b)               | liuhaotian/llava-v1.5-13b        | LLaVA-1.5 | 13B  | no      |
 | [BakLLaVA-1](https://huggingface.co/SkunkworksAI/BakLLaVA-1)                     | SkunkworksAI/BakLLaVA-1          | LLaVA-1.5 | 7B   | no      |
 
+## Ports
+
+| Port | Description |
+|------|-------------|
+| 3000 | LLaVA       |
+| 8888 | Jupyter Lab |
+
+## Environment Variables
+
+| Variable           | Description                                 | Default  |
+|--------------------|---------------------------------------------|----------|
+| JUPYTER_PASSWORD   | Password for Jupyter Lab                    | Jup1t3R! |
+| DISABLE_AUTOLAUNCH | Disable LLaVA from launching automatically  | enabled  |
+| MODEL                              | The path of the Huggingface model               | liuhaotian/llava-v1.6-mistral-7b |
 
 ## Flask API
 
