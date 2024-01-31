@@ -6,10 +6,10 @@
 * CUDA 11.8
 * Python 3.10.12
 * [LLaVA](
-  https://github.com/haotian-liu/llava) v1.1.3
+  https://github.com/haotian-liu/llava) v1.2.0 (LLaVA 1.6)
 * Torch 2.0.1
 * xformers 0.0.22
-* BakLLaVA-1 model
+* llava-v1.6-mistral-7b model
 
 ## Available on RunPod
 
@@ -48,13 +48,24 @@ You can obviously substitute the image name and tag with your own.
 
 You can add an environment called `MODEL` to your Docker container to
 specify the model that should be downloaded.  If the `MODEL` environment
-variable is not set, the model will default to `SkunkworksAI/BakLLaVA-1`.
+variable is not set, the model will default to `liuhaotian/llava-v1.6-mistral-7b`.
 
-| Model                                                              | Environment Variable Value  | Default |
-|--------------------------------------------------------------------|-----------------------------|---------|
-| [llava-v1.5-13b](https://huggingface.co/liuhaotian/llava-v1.5-13b) | liuhaotian/llava-v1.5-13b   | no      |
-| [llava-v1.5-7b](https://huggingface.co/liuhaotian/llava-v1.5-7b)   | liuhaotian/llava-v1.5-7b    | no      |
-| [BakLLaVA-1](https://huggingface.co/SkunkworksAI/BakLLaVA-1)       | SkunkworksAI/BakLLaVA-1     | yes     |
+### LLaVA-v1.6
+
+| Model                                                                            | Environment Variable Value       | Version    | LLM           | Default |
+|----------------------------------------------------------------------------------|----------------------------------|------------|---------------|---------|
+| [llava-v1.6-vicuna-7b](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b)   | liuhaotian/llava-v1.6-vicuna-7b  | LLaVA-1.6  | Vicuna-7B     | no      |
+| [llava-v1.6-vicuna-13b](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b) | liuhaotian/llava-v1.6-vicuna-13b | LLaVA-1.6  | Vicuna-13B    | no      |
+| [llava-v1.6-mistral-7b](https://huggingface.co/liuhaotian/llava-v1.6-mistral-7b) | liuhaotian/llava-v1.6-mistral-7b | LLaVA-1.6  | Mistral-7B    | yes     |
+| [llava-v1.6-34b](https://huggingface.co/liuhaotian/llava-v1.6-34b)               | liuhaotian/llava-v1.6-34b        | LLaVA-1.6  | Hermes-Yi-34B | no      |
+
+### LLaVA-v1.5
+
+| Model                                                                            | Environment Variable Value       | Version   | Size | Default |
+|----------------------------------------------------------------------------------|----------------------------------|-----------|------|---------|
+| [llava-v1.5-7b](https://huggingface.co/liuhaotian/llava-v1.5-7b)                 | liuhaotian/llava-v1.5-7b         | LLaVA-1.5 | 7B   | no      |
+| [llava-v1.5-13b](https://huggingface.co/liuhaotian/llava-v1.5-13b)               | liuhaotian/llava-v1.5-13b        | LLaVA-1.5 | 13B  | no      |
+| [BakLLaVA-1](https://huggingface.co/SkunkworksAI/BakLLaVA-1)                     | SkunkworksAI/BakLLaVA-1          | LLaVA-1.5 | 7B   | no      |
 
 
 ## Flask API

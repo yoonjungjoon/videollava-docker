@@ -1,7 +1,7 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG LLAVA_COMMIT=9227eedf8b31a62b71900e67d54c891c5d1d6fef
+ARG LLAVA_COMMIT=607bc647a8ac9bb099fa46fb0b08cb7b471f528e
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -83,7 +83,7 @@ RUN source /venv/bin/activate && \
     pip3 install -e . && \
     pip3 install ninja && \
     pip3 install flash-attn --no-build-isolation && \
-    pip3 install transformers==4.34.1 && \
+    pip3 install transformers==4.37.2 && \
     pip3 install protobuf && \
     deactivate
 
@@ -111,6 +111,6 @@ WORKDIR /
 COPY --chmod=755 scripts/* ./
 
 # Start the container
-ENV TEMPLATE_VERSION=1.2.5
+ENV TEMPLATE_VERSION=1.3.0
 SHELL ["/bin/bash", "--login", "-c"]
 ENTRYPOINT [ "/start.sh" ]

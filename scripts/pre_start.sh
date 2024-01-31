@@ -56,7 +56,7 @@ else
     then
       export LLAVA_MODEL=${MODEL}
     else
-      export LLAVA_MODEL="SkunkworksAI/BakLLaVA-1"
+      export LLAVA_MODEL="liuhaotian/llava-v1.6-mistral-7b"
     fi
 
     echo "Starting LLaVA using model: ${LLAVA_MODEL}"
