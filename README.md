@@ -9,6 +9,12 @@
   https://github.com/haotian-liu/llava) v1.2.0 (LLaVA 1.6)
 * Torch 2.0.1
 * xformers 0.0.22
+* [runpodctl](https://github.com/runpod/runpodctl)
+* [croc](https://github.com/schollz/croc)
+* [rclone](https://rclone.org/)
+* speedtest-cli
+* screen
+* tmux
 * llava-v1.6-mistral-7b model
 
 ## Available on RunPod
