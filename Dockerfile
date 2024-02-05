@@ -89,6 +89,14 @@ RUN source /venv/bin/activate && \
     pip3 install protobuf && \
     deactivate
 
+# Download the default model
+ENV MODEL="liuhaotian/llava-v1.6-mistral-7b"
+COPY --chmod=755 scripts/download_models.py /download_models.py
+RUN source /venv/bin/activate && \
+    pip3 install huggingface_hub && \
+    python3 /download_models.py && \
+    deactivate
+
 # Install Jupyter
 RUN pip3 install -U --no-cache-dir jupyterlab \
         jupyterlab_widgets \
