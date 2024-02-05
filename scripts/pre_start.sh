@@ -10,14 +10,16 @@ else
     EXISTING_VERSION="0.0.0"
 fi
 
+# Sync apps to /workspace to support Network Volumes
 sync_apps() {
-    # Sync venv to workspace to support Network volumes
     echo "Syncing venv to workspace, please wait..."
     rsync --remove-source-files -rlptDu /venv/ /workspace/venv/
 
-    # Sync LLaVA to workspace to support Network volumes
     echo "Syncing LLaVA to workspace, please wait..."
     rsync --remove-source-files -rlptDu /LLaVA/ /workspace/LLaVA/
+
+    echo "Syncing model to workspace, please wait..."
+    rsync --remove-source-files -rlptDu /hub/ /workspace/hub/
 
     echo "${TEMPLATE_VERSION}" > /workspace/template_version
 }
@@ -32,9 +34,6 @@ if [ "$(printf '%s\n' "$EXISTING_VERSION" "$TEMPLATE_VERSION" | sort -V | head -
     if [ "$EXISTING_VERSION" != "$TEMPLATE_VERSION" ]; then
         sync_apps
         fix_venvs
-
-        # Create log directory
-        mkdir -p /workspace/logs
     else
         echo "Existing version is the same as the template version, no syncing required."
     fi

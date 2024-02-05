@@ -91,6 +91,7 @@ RUN source /venv/bin/activate && \
 
 # Download the default model
 ENV MODEL="liuhaotian/llava-v1.6-mistral-7b"
+ENV HF_HOME="/"
 COPY --chmod=755 scripts/download_models.py /download_models.py
 RUN source /venv/bin/activate && \
     pip3 install huggingface_hub && \
