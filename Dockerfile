@@ -1,7 +1,7 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG LLAVA_COMMIT=6b5c9f19ee90c57722662637c2ad7b0d081ef68a
+ARG LLAVA_COMMIT=be683a6884bb663f870995e95211ca2fbc89fdf7
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -67,8 +67,8 @@ RUN python3 -m venv /venv
 
 # Install Torch
 RUN source /venv/bin/activate && \
-    pip3 install --no-cache-dir torch==2.0.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
-    pip3 install --no-cache-dir xformers==0.0.22 && \
+    pip3 install --no-cache-dir torch==2.1.2 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+#    pip3 install --no-cache-dir xformers==0.0.22 && \
     deactivate
 
 # Clone the git repo of LLaVA and set version
@@ -123,6 +123,6 @@ WORKDIR /
 COPY --chmod=755 scripts/* ./
 
 # Start the container
-ENV TEMPLATE_VERSION=1.3.2
+ENV TEMPLATE_VERSION=1.4.0
 SHELL ["/bin/bash", "--login", "-c"]
 CMD [ "/start.sh" ]
