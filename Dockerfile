@@ -1,7 +1,7 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG LLAVA_COMMIT=cac9a899317000b6fa4942e12a85dcd3b3084533
+ARG LLAVA_COMMIT=b323f721ee589f96373bbb1b6bcb78a0a8245159
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -132,6 +132,6 @@ WORKDIR /
 COPY --chmod=755 scripts/* ./
 
 # Start the container
-ENV TEMPLATE_VERSION=1.4.1
+ENV TEMPLATE_VERSION=1.4.2
 SHELL ["/bin/bash", "--login", "-c"]
 CMD [ "/start.sh" ]
