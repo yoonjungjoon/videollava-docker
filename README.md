@@ -8,7 +8,10 @@
 * [LLaVA](
   https://github.com/haotian-liu/llava) v1.2.0 (LLaVA 1.6)
 * Torch 2.1.2
+* Jupyter Lab
 * [runpodctl](https://github.com/runpod/runpodctl)
+* [OhMyRunPod](https://github.com/kodxana/OhMyRunPod)
+* [RunPod File Uploader](https://github.com/kodxana/RunPod-FilleUploader)
 * [croc](https://github.com/schollz/croc)
 * [rclone](https://rclone.org/)
 * speedtest-cli
@@ -38,6 +41,7 @@ docker run -d \
   -v /workspace \
   -p 3000:3001 \
   -p 8888:8888 \
+  -p 2999:2999 \
   -e JUPYTER_PASSWORD=Jup1t3R! \
   ashleykza/llava:latest
 ```
@@ -74,18 +78,36 @@ variable is not set, the model will default to `liuhaotian/llava-v1.6-mistral-7b
 
 ## Ports
 
-| Port | Description |
-|------|-------------|
-| 3000 | LLaVA       |
-| 8888 | Jupyter Lab |
+| Connect Port | Internal Port | Description          |
+|--------------|---------------|----------------------|
+| 3000         | 3001          | LLaVA                |
+| 8888         | 8888          | Jupyter Lab          |
+| 2999         | 2999          | RunPod File Uploader |
 
 ## Environment Variables
 
-| Variable           | Description                                 | Default  |
-|--------------------|---------------------------------------------|----------|
-| JUPYTER_PASSWORD   | Password for Jupyter Lab                    | Jup1t3R! |
-| DISABLE_AUTOLAUNCH | Disable LLaVA from launching automatically  | enabled  |
-| MODEL                              | The path of the Huggingface model               | liuhaotian/llava-v1.6-mistral-7b |
+| Variable           | Description                                 | Default                          |
+|--------------------|---------------------------------------------|----------------------------------|
+| JUPYTER_PASSWORD   | Password for Jupyter Lab                    | Jup1t3R!                         |
+| DISABLE_AUTOLAUNCH | Disable LLaVA from launching automatically  | enabled                          |
+| MODEL              | The path of the Huggingface model           | liuhaotian/llava-v1.6-mistral-7b |
+
+## Logs
+
+LLaVA creates log files, and you can tail the log files
+instead of killing the services to view the logs.
+
+| Application   | Log file                         |
+|---------------|----------------------------------|
+| Controller    | /workspace/logs/controller.log   |
+| Webserver     | /workspace/logs/webserver.log    |
+| Model Worker  | /workspace/logs/model-worker.log |
+
+For example:
+
+```bash
+tail -f /workspace/logs/webserver.log
+```
 
 ## Flask API
 
