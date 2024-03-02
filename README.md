@@ -42,7 +42,7 @@ docker run -d \
   -p 3000:3001 \
   -p 8888:8888 \
   -p 2999:2999 \
-  -e VENV_PATH="/workspace/venvs/LLaVA" \
+  -e VENV_PATH="/workspace/venvs/llava" \
   ashleykza/llava:latest
 ```
 
