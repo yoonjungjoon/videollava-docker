@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source /workspace/venv/bin/activate
+VENV_PATH=$(cat /workspace/LLaVA/venv_path)
+source ${VENV_PATH}/bin/activate
 cd /workspace/LLaVA
 nohup python3 -m llava.serve.controller \
   --host ${LLAVA_HOST} \

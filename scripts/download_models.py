@@ -10,5 +10,5 @@ if __name__ == '__main__':
     print(f'Downloading LLaVA model: {model}')
     snapshot_download(model)
 
-    print(f'Downloading CLIP model: {model}')
+    print(f'Downloading CLIP model: {clip_model}')
     snapshot_download(clip_model)
