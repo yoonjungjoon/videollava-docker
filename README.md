@@ -42,7 +42,7 @@ docker run -d \
   -p 3000:3001 \
   -p 8888:8888 \
   -p 2999:2999 \
-  -e JUPYTER_PASSWORD=Jup1t3R! \
+  -e VENV_PATH="/workspace/venvs/LLaVA" \
   ashleykza/llava:latest
 ```
 
@@ -70,11 +70,11 @@ variable is not set, the model will default to `liuhaotian/llava-v1.6-mistral-7b
 
 ### LLaVA-v1.5
 
-| Model                                                                            | Environment Variable Value       | Version   | Size | Default |
-|----------------------------------------------------------------------------------|----------------------------------|-----------|------|---------|
-| [llava-v1.5-7b](https://huggingface.co/liuhaotian/llava-v1.5-7b)                 | liuhaotian/llava-v1.5-7b         | LLaVA-1.5 | 7B   | no      |
-| [llava-v1.5-13b](https://huggingface.co/liuhaotian/llava-v1.5-13b)               | liuhaotian/llava-v1.5-13b        | LLaVA-1.5 | 13B  | no      |
-| [BakLLaVA-1](https://huggingface.co/SkunkworksAI/BakLLaVA-1)                     | SkunkworksAI/BakLLaVA-1          | LLaVA-1.5 | 7B   | no      |
+| Model                                                              | Environment Variable Value | Version   | Size | Default |
+|--------------------------------------------------------------------|----------------------------|-----------|------|---------|
+| [llava-v1.5-7b](https://huggingface.co/liuhaotian/llava-v1.5-7b)   | liuhaotian/llava-v1.5-7b   | LLaVA-1.5 | 7B   | no      |
+| [llava-v1.5-13b](https://huggingface.co/liuhaotian/llava-v1.5-13b) | liuhaotian/llava-v1.5-13b  | LLaVA-1.5 | 13B  | no      |
+| [BakLLaVA-1](https://huggingface.co/SkunkworksAI/BakLLaVA-1)       | SkunkworksAI/BakLLaVA-1    | LLaVA-1.5 | 7B   | no      |
 
 ## Ports
 
@@ -86,11 +86,11 @@ variable is not set, the model will default to `liuhaotian/llava-v1.6-mistral-7b
 
 ## Environment Variables
 
-| Variable           | Description                                 | Default                          |
-|--------------------|---------------------------------------------|----------------------------------|
-| JUPYTER_PASSWORD   | Password for Jupyter Lab                    | Jup1t3R!                         |
-| DISABLE_AUTOLAUNCH | Disable LLaVA from launching automatically  | enabled                          |
-| MODEL              | The path of the Huggingface model           | liuhaotian/llava-v1.6-mistral-7b |
+| Variable           | Description                                  | Default                          |
+|--------------------|----------------------------------------------|----------------------------------|
+| VENV_PATH          | Set the path for the Python venv for the app | /workspace/venvs/LLaVA           |
+| DISABLE_AUTOLAUNCH | Disable LLaVA from launching automatically   | enabled                          |
+| MODEL              | The path of the Huggingface model            | liuhaotian/llava-v1.6-mistral-7b |
 
 ## Logs
 
