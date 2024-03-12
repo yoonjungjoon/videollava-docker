@@ -1,16 +1,11 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG LLAVA_COMMIT=fd3f3d29c418ccfca618cc96a8c3f63302b3bda7
-
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=on \
     SHELL=/bin/bash
-
-# Create workspace working directory
-WORKDIR /
 
 # Install Ubuntu packages
 RUN apt update && \
@@ -63,16 +58,20 @@ RUN ln -s /usr/bin/python3.10 /usr/bin/python
 FROM base as setup
 
 # Create and use the Python venv
+WORKDIR /
 RUN python3 -m venv /venv
 
 # Install Torch
+ARG INDEX_URL
+ARG TORCH_VERSION
+ARG XFORMERS_VERSION
 RUN source /venv/bin/activate && \
-    pip3 install --no-cache-dir torch==2.1.2 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
-#    pip3 install --no-cache-dir xformers==0.0.22 && \
+    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url ${INDEX_URL} && \
+    pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} --index-url ${INDEX_URL} && \
     deactivate
 
 # Clone the git repo of LLaVA and set version
-WORKDIR /
+ARG LLAVA_COMMIT
 RUN git clone https://github.com/ashleykleynhans/LLaVA.git && \
     cd /LLaVA && \
     git checkout ${LLAVA_COMMIT}
@@ -90,7 +89,8 @@ RUN source /venv/bin/activate && \
     deactivate
 
 # Download the default model
-ENV MODEL="liuhaotian/llava-v1.6-mistral-7b"
+ARG LLAVA_MODEL
+ENV MODEL="${LLAVA_MODEL}"
 ENV HF_HOME="/"
 COPY --chmod=755 scripts/download_models.py /download_models.py
 RUN source /venv/bin/activate && \
@@ -115,7 +115,8 @@ RUN curl -sSL https://github.com/kodxana/RunPod-FilleUploader/raw/main/scripts/i
 RUN curl https://rclone.org/install.sh | bash
 
 # Install runpodctl
-RUN wget https://github.com/runpod/runpodctl/releases/download/v1.13.0/runpodctl-linux-amd64 -O runpodctl && \
+ARG RUNPODCTL_VERSION
+RUN wget "https://github.com/runpod/runpodctl/releases/download/${RUNPODCTL_VERSION}/runpodctl-linux-amd64" -O runpodctl && \
     chmod a+x runpodctl && \
     mv runpodctl /usr/local/bin
 
@@ -134,10 +135,12 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/502.html /usr/share/nginx/html/502.html
 
 # Set template version
-ENV TEMPLATE_VERSION=1.4.5
+ARG RELEASE
+ENV TEMPLATE_VERSION=${RELEASE}
 
 # Set the venv path
-ENV VENV_PATH="/workspace/venvs/llava"
+ARG VENV_PATH
+ENV VENV_PATH=${VENV_PATH}
 
 # Copy the scripts
 WORKDIR /

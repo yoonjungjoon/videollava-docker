@@ -8,6 +8,7 @@
 * [LLaVA](
   https://github.com/haotian-liu/llava) v1.2.0 (LLaVA 1.6)
 * Torch 2.1.2
+* xformers 0.0.23.post1
 * Jupyter Lab
 * [runpodctl](https://github.com/runpod/runpodctl)
 * [OhMyRunPod](https://github.com/kodxana/OhMyRunPod)
@@ -25,6 +26,25 @@ This image is designed to work on [RunPod](https://runpod.io?ref=2xxro4sy).
 You can use my custom [RunPod template](
 https://runpod.io/gsc?template=g7wd33iuwv&ref=2xxro4sy)
 to launch it on RunPod.
+
+## Building the Docker image
+
+> [!NOTE]
+> You will need to edit the `docker-bake.hcl` file and update `RELEASE`,
+> and `tags`.  You can obviously edit the other values too, but these
+> are the most important ones.
+
+```bash
+# Clone the repo
+git clone https://github.com/ashleykleynhans/llava-docker.git
+
+# Log in to Docker Hub
+docker login
+
+# Build the image, tag the image, and push the image to Docker Hub
+cd llava-docker
+docker buildx bake -f docker-bake.hcl --push
+```
 
 ## Running Locally
 
