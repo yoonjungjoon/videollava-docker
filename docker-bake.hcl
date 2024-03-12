@@ -8,7 +8,7 @@ variable "CU_VERSION" {
 
 target "default" {
     dockerfile = "Dockerfile"
-    tags = ["ashleykza/llava${RELEASE}"]
+    tags = ["ashleykza/llava:${RELEASE}"]
     args = {
         RELEASE = "${RELEASE}"
         INDEX_URL = "https://download.pytorch.org/whl/cu${CU_VERSION}"
