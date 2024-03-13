@@ -25,6 +25,6 @@ target "default" {
         LLAVA_COMMIT = "fd3f3d29c418ccfca618cc96a8c3f63302b3bda7"
         LLAVA_MODEL = "liuhaotian/llava-v1.6-mistral-7b"
         RUNPODCTL_VERSION = "v1.14.2"
-        VENV_PATH = "/workspace/venvs/llava"
+        VENV_PATH = "/workspace/venvs/${APP}"
     }
 }
