@@ -106,11 +106,12 @@ variable is not set, the model will default to `liuhaotian/llava-v1.6-mistral-7b
 
 ## Environment Variables
 
-| Variable           | Description                                  | Default                          |
-|--------------------|----------------------------------------------|----------------------------------|
-| VENV_PATH          | Set the path for the Python venv for the app | /workspace/venvs/llava           |
-| DISABLE_AUTOLAUNCH | Disable LLaVA from launching automatically   | enabled                          |
-| MODEL              | The path of the Huggingface model            | liuhaotian/llava-v1.6-mistral-7b |
+| Variable             | Description                                  | Default                          |
+|----------------------|----------------------------------------------|----------------------------------|
+| VENV_PATH            | Set the path for the Python venv for the app | /workspace/venvs/llava           |
+| JUPYTER_LAB_PASSWORD | Set a password for Jupyter lab               | not set - no password            |
+| DISABLE_AUTOLAUNCH   | Disable LLaVA from launching automatically   | enabled                          |
+| MODEL                | The path of the Huggingface model            | liuhaotian/llava-v1.6-mistral-7b |
 
 ## Logs
 
