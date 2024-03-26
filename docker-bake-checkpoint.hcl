@@ -15,7 +15,7 @@ variable "CU_VERSION" {
 }
 
 variable "INCLUDE_CHECKPOINT" {
-    default = false  # true
+    default = true  # true
 }
 
 target "default" {
