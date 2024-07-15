@@ -1,4 +1,4 @@
-# Docker image for LLaVA: Large Language and Vision Assistant
+# Docker image for Video-LLaVA: Learning United Visual Representation by Alignment Before Projection
 
 ## Usage (locally)
 
